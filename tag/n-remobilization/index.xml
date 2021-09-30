@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>N remobilization | Wei Li|李伟</title>
+    <link>/tag/n-remobilization/</link>
+      <atom:link href="/tag/n-remobilization/index.xml" rel="self" type="application/rss+xml" />
+    <description>N remobilization</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Fri, 09 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>N remobilization</title>
+      <link>/tag/n-remobilization/</link>
+    </image>
+    
+    <item>
+      <title>Spectroscopic Estimation of N Remobilization</title>
+      <link>/publication/2021-03-24-spectroscopic-estimation-of-n-remobilization/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/2021-03-24-spectroscopic-estimation-of-n-remobilization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fine Mapping of qhir8 in Maize</title>
+      <link>/publication/fine-mapping-of-qhir8-in-maize/</link>
+      <pubDate>Tue, 06 Oct 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/fine-mapping-of-qhir8-in-maize/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

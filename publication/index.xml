@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications | Wei Li|李伟</title>
+    <link>/publication/</link>
+      <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Mon, 27 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>Publications</title>
+      <link>/publication/</link>
+    </image>
+    
+    <item>
+      <title>Sorghum grain nutrients measurement using NIR</title>
+      <link>/publication/sorghum-grain-nutrients-measurement-using-nir/</link>
+      <pubDate>Mon, 27 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/sorghum-grain-nutrients-measurement-using-nir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spectroscopic Estimation of N Remobilization</title>
+      <link>/publication/2021-03-24-spectroscopic-estimation-of-n-remobilization/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/2021-03-24-spectroscopic-estimation-of-n-remobilization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting micronutrients of wheat using hyperspectral imaging</title>
+      <link>/publication/predicting-micronutrients-of-wheat-using-hyperspectral-imaging/</link>
+      <pubDate>Mon, 26 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/predicting-micronutrients-of-wheat-using-hyperspectral-imaging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>QTL Mapping and Prediction of Haploid Male Fertility Traits in Maize</title>
+      <link>/publication/qtl-mapping-and-prediction-of-haploid-male-fertility-traits-in-maize/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/qtl-mapping-and-prediction-of-haploid-male-fertility-traits-in-maize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development of In Vivo Haploid Inducer Lines for Screening Haploid Immature Embryos in Maize</title>
+      <link>/publication/new-haploid-inducer/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/new-haploid-inducer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mutation of ZmDMP enhances haploid induction in maize</title>
+      <link>/publication/cloning-of-zmdmp/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/cloning-of-zmdmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twin embryo seeds in maize</title>
+      <link>/publication/twin-embryo-in-maize/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/twin-embryo-in-maize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fine Mapping of qhir8 in Maize</title>
+      <link>/publication/fine-mapping-of-qhir8-in-maize/</link>
+      <pubDate>Tue, 06 Oct 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/fine-mapping-of-qhir8-in-maize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Genome-wide genetic changes during modern breeding of maize</title>
+      <link>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</link>
+      <pubDate>Sun, 03 Jun 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

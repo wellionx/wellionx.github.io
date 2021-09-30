@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>academic | Wei Li|李伟</title>
+    <link>/tag/academic/</link>
+      <atom:link href="/tag/academic/index.xml" rel="self" type="application/rss+xml" />
+    <description>academic</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Tue, 28 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>academic</title>
+      <link>/tag/academic/</link>
+    </image>
+    
+    <item>
+      <title>My first R package--ggwheat</title>
+      <link>/post/my-first-r-package-ggwheat/</link>
+      <pubDate>Tue, 28 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/post/my-first-r-package-ggwheat/</guid>
+      <description>
+&lt;script src=&#34;/post/my-first-r-package-ggwheat/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;关于这个R包，早期也写过一篇介绍的文章，推送在小麦研究联盟的公众号上（&lt;a href=&#34;https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A&#34;&gt;一千零一技 | 我用R画了一株小麦&lt;/a&gt;）。&lt;/p&gt;
+&lt;p&gt;当时仅仅是在我的电脑上实现了一个小麦植株器官的可视化功能。后来，有很多人对这个功能感兴趣。于是将这个功能写成R包的计划就提上日程。&lt;/p&gt;
+&lt;p&gt;在介绍这个R包的功能之前，先简单回顾一下整个创作工程。&lt;/p&gt;
+&lt;p&gt;我将其分为3个步骤：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;素材准备与制作&lt;/li&gt;
+&lt;li&gt;数据融合与功能优化&lt;/li&gt;
+&lt;li&gt;R包开发&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面将逐一介绍各个步骤&lt;/p&gt;
+&lt;div id=&#34;素材准备与制作&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. 素材准备与制作&lt;/h3&gt;
+&lt;p&gt;这个步骤应该是最难的，我觉得。&lt;/p&gt;
+&lt;p&gt;最初有这个想法，是和本实验室的一本博士生讨论的时候萌生的。当时我们都觉的有必要用一种更简单和直观的方式展示数据。然而苦于没有合适的素材和展示方式，当时就将此事搁浅了。&lt;/p&gt;
+&lt;p&gt;后来，一次偶然的机会。在搜集素材时找到一个小麦植株的矢量图。当时的素材时这个样子。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/src_selected.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;看到这张图的时候，我们一致认为，这就是要找的素材。&lt;/p&gt;
+&lt;p&gt;找到素材之后，接下来就该考虑怎么使用了。&lt;/p&gt;
+&lt;p&gt;我们的想法很简单，找一株最具有代表性的小麦植株，用来展示小麦各器官的。相对来说比较完整的，应该是开花到灌浆期间。这个期间整个植株的发育已经完成，而且穗也比较完全。所以最终选择了灌浆期的这株小麦素材。&lt;/p&gt;
+&lt;p&gt;选好以后，我们就将素材直接放到PPT中做了试验。由于素材各器官是分开的，在PPT中作为形状独立存在。因此，不同器官的化学成分含量可以用该器官形状的颜色的展示。初步的效果如下图。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/wheat_plant_ver1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然而，当我们耗时一个多小时将上面的图画完的时候，我们觉得如果小麦植株绘图如果以后要这样用的话，就太麻烦了。每次都需要手动注入数据信息，而且这个过程全凭感觉。&lt;/p&gt;
+&lt;p&gt;这个时候，我想到了R。作为一款专业绘图的统计软件，R在可视化方面有着十分强大的功能。&lt;/p&gt;
+&lt;p&gt;我们案例中，展示植株的形状，和地图的多边形有诸多相似之处。R语言中恰好有一款展示地图数据的R包&lt;code&gt;sf&lt;/code&gt;。这个R包不仅有展示地图的功能，还能自己制作地图。而地图制作中的其中一个元素，多边形，正是和我们做的小麦植株轮廓相似。&lt;/p&gt;
+&lt;p&gt;于是接下来转战到用R包&lt;code&gt;sf&lt;/code&gt;进行小麦植株器官可视化。&lt;/p&gt;
+&lt;p&gt;首选需要根据素材，制作出来小麦植株各器官的多边形轮廓。这个步骤在公众号文章（&lt;a href=&#34;https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A&#34;&gt;一千零一技 | 我用R画了一株小麦&lt;/a&gt;）有详细介绍，在此不再赘述。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/plotwehatinR.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将图形组合成完整的植株，就可以在R里面就行操作了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;数据融合与基础功能开发&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2. 数据融合与基础功能开发&lt;/h3&gt;
+&lt;p&gt;先来看下例子。这个例子中，使用随机数为小麦植株9中器官做了赋值。通过图中颜色可以明显辨别不同器官的数值差异。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;strong&gt;添加数据标签功能&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;然而，仅仅通过颜色的变化好像还不足以展示出器官间的不同。尤其是当某几个器官数据差异不大导致颜色无法分辨时。就有必要用具体的数据加以区分了。我们通过对每个器官添加标签的方式来实现。提前在器官上选取坐标作为标签在器官的位置。为了使显示的数值标签不遮挡，采用R包&lt;code&gt;ggrepel&lt;/code&gt;进行标签展示。具体结果如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;添加不同调色板&lt;/strong&gt;
+最初做颜色展示的时候，只考虑用颜色变异大的色彩。spectral色板成为了首选。当时当成品出来的时候，发现并不是那么好看。于是又挑选了其他几种色板，可以根据需要自行选择。比如，我要展示的氮含量的数据。这个数据植株绿色相关，我希望颜色越绿，表示的氮含量越高。而又希望对比色略微有些差异。那我就可以用YlGn色板。也就是图中第四个展示的。
+&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;展示时间尺度的变化&lt;/strong&gt;
+上面讲到的仅仅是单株小麦在器官之间的空间变化。而我们实际试验过程中不仅仅取一次样品。如果多次取样，如何展示其时间变化呢。&lt;/p&gt;
+&lt;p&gt;ggplot中的分面功能很好的解决了这个问题。下面这张图就是展示时空变化的小麦植株氮浓度(同头图)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;1632&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任意组合不同时间下的植株&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;展示开花期和成熟期的济麦22与农大399两个小麦品种，并且加上数值标签。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;960&#34; /&gt;
+以上是品种济麦22&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;
+以上是品种农大399&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;开发r包&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3. 开发R包&lt;/h3&gt;
+&lt;p&gt;有了以上的实施思想和实现过程，剩下的就是用R包开发的软件将这些函数打包。统计之都网站有一篇博客介绍了&lt;a href=&#34;https://cosx.org/2013/11/building-r-packages-easily&#34;&gt;R包的建立方法&lt;/a&gt;。另外，也有一些开发R包的工具，包括&lt;code&gt;pkgdown&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;R包开发的过程就是将各种函数写入打包调试的过程。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/R_pkg_dev.jpg&#34; /&gt;
+目前已经创建好R包开发的项目，接下来就根据前面实现的功能将其转换成函数写入到R包中。&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The key steps of protein content visualizaiton through HSI</title>
+      <link>/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/</link>
+      <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/</guid>
+      <description>
+&lt;script src=&#34;/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;如上图所示，通过成像光谱，我们可以很轻松的对小麦籽粒中的蛋白含量进行可视化。&lt;/p&gt;
+&lt;div id=&#34;籽粒蛋白成像的基本步骤&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;籽粒蛋白成像的基本步骤&lt;/h4&gt;
+&lt;p&gt;这一过程的实现，包含两个关键步骤：一是建立单籽粒水平的光谱预测模型；二是将模型应用的图像中，使用图像处理的方法进行可视化。&lt;/p&gt;
+&lt;p&gt;光谱建模的步骤是常规操作，这里不再赘述。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;光谱图像可视化籽粒蛋白含量&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;光谱图像可视化籽粒蛋白含量&lt;/h4&gt;
+&lt;p&gt;本文重点讲一下图像处理的过程。&lt;/p&gt;
+&lt;p&gt;我们都知道光谱图像（HSI）具有光谱和图像的双重特征。也就是说在光谱图像中，每一个像素都包含了一条光谱信息。而根据像素的光谱信息，再利用建立的籽粒蛋白预测模型，我们可以很容易的预测图像中每一个像素的蛋白含量。下图便是我们得到的一张像素水平的籽粒蛋白含量图。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/%E5%83%8F%E7%B4%A0%E6%B0%B4%E5%B9%B3%E8%9B%8B%E7%99%BD%E6%88%90%E5%83%8F.jpg&#34; alt=&#34;像素蛋白成像&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这个图展示了两个蛋白含量不同的品种。图中虽然能大体看出两个品种的差异，然而具体到每个品种中各不同籽粒的差异，就无法分辨了。&lt;/p&gt;
+&lt;p&gt;造成这样结果的原因是，图像中单个籽粒内部不同像素的光谱其实是存在较大差异的。而由于受到拍摄环境和像素位置等的影响，这些光谱的差异是不可避免的。当用这些有差异的光谱进行蛋白预测时，必然会导致籽粒内部像素级蛋白的巨大差异。为了处理这些差异，或者缩小这些差异，我们采用均值模糊的方法对图像进行处理。具体处理方法是，用临近的6个像素的平均值代表该像素，这样就能在一定程度上缩小误差。经过模糊均值处理的图像如下图所示。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/blur_pr_img.jpg&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;单籽粒籽粒蛋白含量可视化&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;单籽粒籽粒蛋白含量可视化&lt;/h4&gt;
+&lt;p&gt;在育种过程中，对单籽粒的选择尤为重要。虽然室内的近红外光谱可以一定程度上实现单籽粒蛋白的测定，但是其效率不高。而成像光谱为单籽粒蛋白含量的测定提供了很好的工具。&lt;/p&gt;
+&lt;p&gt;本研究得到的图像，经过图像分割处理，可以将图像中的籽粒区分开来。结合建立的模型，对每一个独立籽粒的蛋白含量就行预测，即可得到单籽粒蛋白含量图像。&lt;/p&gt;
+&lt;p&gt;从图像中可以看出，大部分籽粒都与其他籽粒相互分开分开。籽粒之间的分割，首先采用了连通区域分析算法，这个算法将相互连接的像素区域打上相同的标记。根据标记可以区分出不同的分离物体（籽粒）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;labeltheseedmix.gif&#34; title=&#34;连通区域法分割籽粒&#34; /&gt;
+这个动图形象的展示了该图形分割方法。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/Figure_labeledseeds.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然而我们发现，其中还有一些籽粒挨的比较近，无法分开。于是尝试用另外一种方法——分水岭算法进行分割。最终得到满意的分割图像，然后将每个籽粒内部对应的蛋白质（像素水平）预测含量取平均值，用颜色标签展示数值范围。就能得到最终想要的图像了。该图形可以交互展示，即鼠标放到对应的籽粒上，会在右上角显示该位置坐标和对应的籽粒蛋白含量。
+&lt;img src=&#34;seedprpick.gif&#34; title=&#34;单籽粒蛋白成像交互演示&#34; /&gt;
+下面图片展示了两个品种的单籽粒成像图。
+由于通过图像分割对每个籽粒进行了标记，因此可以得到每一个籽粒的蛋白含量数据。利用这些数据可以做一些统计分析。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/%E5%8D%95%E7%B1%BD%E7%B2%92%E8%9B%8B%E7%99%BD%E6%88%90%E5%83%8F_chn.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Draw wheat chart in R</title>
+      <link>/post/draw-wheat-chart-in-r/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/draw-wheat-chart-in-r/</guid>
+      <description>
+&lt;script src=&#34;/post/draw-wheat-chart-in-r/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/NC-variation_spatial-and-temperal.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;前几天，在微信公众号里看到有个R包（gganatogram) 可以画动物和植物的图形，但是里面的小麦不好看。于是把我用R画的小麦分享出来，比一比哪个更好看😜。&lt;/p&gt;
+&lt;p&gt;话不多说，先上图。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;先说说为什么要画这么一个图。&lt;/p&gt;
+&lt;p&gt;那是在我刚进课题组的时候，就了解到实验室有大量小麦的数据。而且是从叶片到茎秆再到穗和籽粒等等各种器官一应俱全。更让人惊喜的是这些数据时间跨度大。当时我就在想，用什么样的方式才能展示出来这么丰富的空间和时间变化呢？&lt;/p&gt;
+&lt;p&gt;一次偶然的机会，我联想到地图，地图里面的各个区域由多边形组成，区域的数值变化可以通过填色来完成。眼尖的同学应该看出来了，里面正是我华北平原的吴桥实验站（手动笑脸）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;而我们一株小麦上的各个器官正好对应着地图上不同区域。利用小麦不同器官的轮廓图，勾勒出多边形，再把多边形组合，就形成一株完整的小麦。&lt;/p&gt;
+&lt;p&gt;有了这个想法之后，我就开始实施。首先从网上找到一株小麦的矢量图（就是各器官能分开的图形），然后根据各部分的轮廓创建多边形。是的，图形数据化用到了一款开源软件，名为&lt;a href=&#34;https://automeris.io/WebPlotDigitizer/&#34;&gt;WebPlotDigitizer&lt;/a&gt;。这款软件非常强大，可以提取图像或者图片中的坐标数据。这里特别提一句，小麦植株的比例做了一些微调，可能与真实的有点出入，但是不影响数据展示。还有一点，我们课题组专门研究地上部分的，暂时还没把根(器官)加进去，不过后期会考虑。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img3.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img4.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;多边形创建采用了专门处理gis数据的R包sf。&lt;/p&gt;
+&lt;p&gt;最后的成品就是前面看到的这个样子了。每一个部分都可以根据自己的需求填上任意的颜色。而且颜色也可以根据需求自己选择，颜色的深浅代表指标的高低。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img5.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/draw-wheat-chart-in-r/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
+也可以给每个部分添加标签，放上对应的数据。这样看起来好是不是好很多。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/draw-wheat-chart-in-r/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;再来一张动图看看。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/mygif.gif&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;好吧，最后公布一下那个R包里面的小麦。貌似也没那么难看 😄&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/wheatbygganotom.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Visualize my spectra</title>
+      <link>/post/visualize-my-spectra/</link>
+      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/post/visualize-my-spectra/</guid>
+      <description>
+
+
+&lt;p&gt;从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。&lt;/p&gt;
+&lt;p&gt;于是记录下来我自己实践的过程。&lt;/p&gt;
+&lt;div id=&#34;批量读取光谱数据&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;批量读取光谱数据&lt;/h3&gt;
+&lt;p&gt;一般来说，拿到的原始光谱数据数据有这样的特点：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;光谱反射率和光谱吸收值夹杂在文件内部。&lt;/strong&gt;以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
+&lt;img src=&#34;https://tva3.sinaimg.cn/mw690/6b84e15bgy1ggsq5agy8xj20m80gmmyq.jpg&#34; alt=&#34;SR3501sedfile&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.&lt;strong&gt;数据文件不止一个，常常需要批量读取。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;于是经过多次试错与总结，写下了下面的方法批量读取指定行的光谱数据。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+dir = &amp;quot;Spec/&amp;quot;
+files = list.files(path = dir ,recursive = TRUE)
+# read spectra from AB files
+filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+# define a dataframe to store spectra data
+spec.bdf &amp;lt;- data.frame()
+
+for (flp in filepath) {
+  spec &amp;lt;- read.table(flp, skip = 27, header = F ,
+                     stringsAsFactors = F,row.names = 1)
+  spec.t &amp;lt;- as.data.frame(t(spec))
+  spec.bdf &amp;lt;- rbind(spec.bdf, spec.t)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据需求，有时候要对数据做一下转置。转置后再把所有的数据bind到一起。&lt;/p&gt;
+&lt;p&gt;采用&lt;code&gt;ggplot2&lt;/code&gt;绘图，需要的是长数据，原来两列的数据正好符合要求，只需要添加一列信息即可。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+dir = &amp;quot;Spec/&amp;quot;
+files = list.files(path = dir ,recursive = TRUE)
+# read spectra from AB files
+filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+# define a dataframe to store spectra data
+spec.bdf &amp;lt;- data.frame()
+
+for (flp in filepath) {
+  
+  spec &amp;lt;- read.table(flp, skip = 27, header = F ,stringsAsFactors = F)
+  colnames(spec) &amp;lt;- c(&amp;quot;Wavelengths&amp;quot;,&amp;quot;Reflectance&amp;quot;)
+  spec$unique_id &amp;lt;- basename(flp)
+  spec.df &amp;lt;- rbind(spec.df, spec)
+  
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有了数据就可以展示了，下面是选出来100条光谱进行的展示。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(cowplot)
+load(file = &amp;quot;D:/blogdown/sourceRda/show spectra.rda&amp;quot;)
+# Define nice breaks for x axis
+brk  &amp;lt;- pretty(as.numeric(unique(spec$Wavelengths)), n = 10)
+spec.df$grp &amp;lt;- &amp;quot;A&amp;quot;
+
+ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
+  geom_line(aes(color = grp),alpha = 0.7, size = 0.6) +
+  scale_x_continuous(breaks = brk) +
+  theme_cowplot() +
+  scale_color_manual(values = &amp;quot;black&amp;quot;) +
+  theme(legend.position = &amp;quot;none&amp;quot;) # remove the legend&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;为了好看，我们还可以给每条光谱加上颜色&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;后续更多有意思的分析且听下回分解&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;后续更多有意思的分析，且听下回分解&lt;/h3&gt;
+&lt;p&gt;先附上几张图，再留着以后慢慢讲&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20organ%20separate.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/Spectra%20and%20PCA.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20PCA.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技能 | Wei Li|李伟</title>
+    <link>/category/%E6%8A%80%E8%83%BD/</link>
+      <atom:link href="/category/%E6%8A%80%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <description>技能</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>技能</title>
+      <link>/category/%E6%8A%80%E8%83%BD/</link>
+    </image>
+    
+    <item>
+      <title>手把手教你安装R</title>
+      <link>/post/get-your-hands-dirty-install-r-from-the-begining/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/post/get-your-hands-dirty-install-r-from-the-begining/</guid>
+      <description>&lt;p&gt;写在前面：在正式安装R之前需要做下准备工作，下载原生的R软件以及最好用的R操作界面Rstudio。&lt;/p&gt;
+&lt;p&gt;链接地址：&lt;/p&gt;
+&lt;p&gt;R &lt;a href=&#34;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#34;&gt;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Rstudio &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/#download&#34;&gt;https://www.rstudio.com/products/rstudio/download/#download&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新手在安装R时常常会犯一些错误，导致后期在使用和升级R时体验极为不佳。我这个安装教程是总结了多次安装实战经验之后写下的，希望对想学R但又无从下手的同学能有所帮助。
+另外，安装过程详细的避坑指南，可以参考谢益辉写的&lt;a href=&#34;https://bookdown.org/yihui/r-ninja/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R语言忍者秘笈&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;下面进入正式的安装教程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装原生R (R-4.0.5-win.exe)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;安装时要注意一定一定一定要选择English版本&lt;/li&gt;
+&lt;li&gt;安装目录去掉版本号(C:\Program Files\R)&lt;/li&gt;
+&lt;li&gt;安装选项仅勾选Core files 和 64-bit files即可&lt;/li&gt;
+&lt;li&gt;其他配置都按照默认即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;安装Rstudio (默认安装)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;千万注意顺序，安装原生R之后，再Rstudio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;打开并配置Rstudio，包括字体大小和package的镜像（亲测兰州大学镜像好用）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;字体配置Tools/Global Options/Appearance&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Package镜像配置Tools/Global Options/Packages&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;用户目录的设置（参考R语言忍者秘籍），具体方式如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;normalizePath(&#39;~&#39;) # 查看用户目录
+# 如果文件不存在，它会被自动创建
+file.edit(&#39;~/.Renviron&#39;)
+# 写入配置文件中，保存，重启R
+R_LIBS_USER=&amp;quot;~/R/libs&amp;quot; # C盘C:\Users\Wei\Documents\R\libs
+R_LIBS_USER=&amp;quot;D:/Rlibs&amp;quot; # 可以设置成自己喜欢的位置
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之所以要单独设置一个lib path，是为了方便升级时迁移已经安装的R包。因为后期安装的R包都会优先存储到新配置的目录下。一方面更新R包的时候不需要重新安装，只需将Rlib目录下的R包文件拷贝出来即可；另一方面，附加R包与主程序包是分开的，极大的方便的包的管理。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;检测libPaths位置是否配置成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;.libPaths()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输入以上代码，如显示如下内容，表示配置成功。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[1] &amp;ldquo;D:/Rlibs&amp;rdquo;    &amp;ldquo;C:/Program Files/R/library&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;如不成功，则需重启电脑后查看是否配置生效。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;推荐R图库，有相关的图和代码
+&lt;a href=&#34;https://www.r-graph-gallery.com/index.html&#34;&gt;https://www.r-graph-gallery.com/index.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Draw wheat chart in R</title>
+      <link>/post/draw-wheat-chart-in-r/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/draw-wheat-chart-in-r/</guid>
+      <description>
+&lt;script src=&#34;/post/draw-wheat-chart-in-r/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/NC-variation_spatial-and-temperal.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;前几天，在微信公众号里看到有个R包（gganatogram) 可以画动物和植物的图形，但是里面的小麦不好看。于是把我用R画的小麦分享出来，比一比哪个更好看😜。&lt;/p&gt;
+&lt;p&gt;话不多说，先上图。
+&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;先说说为什么要画这么一个图。&lt;/p&gt;
+&lt;p&gt;那是在我刚进课题组的时候，就了解到实验室有大量小麦的数据。而且是从叶片到茎秆再到穗和籽粒等等各种器官一应俱全。更让人惊喜的是这些数据时间跨度大。当时我就在想，用什么样的方式才能展示出来这么丰富的空间和时间变化呢？&lt;/p&gt;
+&lt;p&gt;一次偶然的机会，我联想到地图，地图里面的各个区域由多边形组成，区域的数值变化可以通过填色来完成。眼尖的同学应该看出来了，里面正是我华北平原的吴桥实验站（手动笑脸）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;而我们一株小麦上的各个器官正好对应着地图上不同区域。利用小麦不同器官的轮廓图，勾勒出多边形，再把多边形组合，就形成一株完整的小麦。&lt;/p&gt;
+&lt;p&gt;有了这个想法之后，我就开始实施。首先从网上找到一株小麦的矢量图（就是各器官能分开的图形），然后根据各部分的轮廓创建多边形。是的，图形数据化用到了一款开源软件，名为&lt;a href=&#34;https://automeris.io/WebPlotDigitizer/&#34;&gt;WebPlotDigitizer&lt;/a&gt;。这款软件非常强大，可以提取图像或者图片中的坐标数据。这里特别提一句，小麦植株的比例做了一些微调，可能与真实的有点出入，但是不影响数据展示。还有一点，我们课题组专门研究地上部分的，暂时还没把根(器官)加进去，不过后期会考虑。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img3.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img4.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;多边形创建采用了专门处理gis数据的R包sf。&lt;/p&gt;
+&lt;p&gt;最后的成品就是前面看到的这个样子了。每一个部分都可以根据自己的需求填上任意的颜色。而且颜色也可以根据需求自己选择，颜色的深浅代表指标的高低。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/img5.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/draw-wheat-chart-in-r/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
+也可以给每个部分添加标签，放上对应的数据。这样看起来好是不是好很多。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/draw-wheat-chart-in-r/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;再来一张动图看看。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/mygif.gif&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;好吧，最后公布一下那个R包里面的小麦。貌似也没那么难看 😄&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/wheatbygganotom.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Visualize my spectra</title>
+      <link>/post/visualize-my-spectra/</link>
+      <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/post/visualize-my-spectra/</guid>
+      <description>
+
+
+&lt;p&gt;从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。&lt;/p&gt;
+&lt;p&gt;于是记录下来我自己实践的过程。&lt;/p&gt;
+&lt;div id=&#34;批量读取光谱数据&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;批量读取光谱数据&lt;/h3&gt;
+&lt;p&gt;一般来说，拿到的原始光谱数据数据有这样的特点：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;光谱反射率和光谱吸收值夹杂在文件内部。&lt;/strong&gt;以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
+&lt;img src=&#34;https://tva3.sinaimg.cn/mw690/6b84e15bgy1ggsq5agy8xj20m80gmmyq.jpg&#34; alt=&#34;SR3501sedfile&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.&lt;strong&gt;数据文件不止一个，常常需要批量读取。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;于是经过多次试错与总结，写下了下面的方法批量读取指定行的光谱数据。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+dir = &amp;quot;Spec/&amp;quot;
+files = list.files(path = dir ,recursive = TRUE)
+# read spectra from AB files
+filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+# define a dataframe to store spectra data
+spec.bdf &amp;lt;- data.frame()
+
+for (flp in filepath) {
+  spec &amp;lt;- read.table(flp, skip = 27, header = F ,
+                     stringsAsFactors = F,row.names = 1)
+  spec.t &amp;lt;- as.data.frame(t(spec))
+  spec.bdf &amp;lt;- rbind(spec.bdf, spec.t)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据需求，有时候要对数据做一下转置。转置后再把所有的数据bind到一起。&lt;/p&gt;
+&lt;p&gt;采用&lt;code&gt;ggplot2&lt;/code&gt;绘图，需要的是长数据，原来两列的数据正好符合要求，只需要添加一列信息即可。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+dir = &amp;quot;Spec/&amp;quot;
+files = list.files(path = dir ,recursive = TRUE)
+# read spectra from AB files
+filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+# define a dataframe to store spectra data
+spec.bdf &amp;lt;- data.frame()
+
+for (flp in filepath) {
+  
+  spec &amp;lt;- read.table(flp, skip = 27, header = F ,stringsAsFactors = F)
+  colnames(spec) &amp;lt;- c(&amp;quot;Wavelengths&amp;quot;,&amp;quot;Reflectance&amp;quot;)
+  spec$unique_id &amp;lt;- basename(flp)
+  spec.df &amp;lt;- rbind(spec.df, spec)
+  
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有了数据就可以展示了，下面是选出来100条光谱进行的展示。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(cowplot)
+load(file = &amp;quot;D:/blogdown/sourceRda/show spectra.rda&amp;quot;)
+# Define nice breaks for x axis
+brk  &amp;lt;- pretty(as.numeric(unique(spec$Wavelengths)), n = 10)
+spec.df$grp &amp;lt;- &amp;quot;A&amp;quot;
+
+ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
+  geom_line(aes(color = grp),alpha = 0.7, size = 0.6) +
+  scale_x_continuous(breaks = brk) +
+  theme_cowplot() +
+  scale_color_manual(values = &amp;quot;black&amp;quot;) +
+  theme(legend.position = &amp;quot;none&amp;quot;) # remove the legend&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;为了好看，我们还可以给每条光谱加上颜色&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;后续更多有意思的分析且听下回分解&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;后续更多有意思的分析，且听下回分解&lt;/h3&gt;
+&lt;p&gt;先附上几张图，再留着以后慢慢讲&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20organ%20separate.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/Spectra%20and%20PCA.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20PCA.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

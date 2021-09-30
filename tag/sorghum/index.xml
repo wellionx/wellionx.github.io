@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sorghum | Wei Li|李伟</title>
+    <link>/tag/sorghum/</link>
+      <atom:link href="/tag/sorghum/index.xml" rel="self" type="application/rss+xml" />
+    <description>sorghum</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Mon, 27 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>sorghum</title>
+      <link>/tag/sorghum/</link>
+    </image>
+    
+    <item>
+      <title>Sorghum grain nutrients measurement using NIR</title>
+      <link>/publication/sorghum-grain-nutrients-measurement-using-nir/</link>
+      <pubDate>Mon, 27 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/sorghum-grain-nutrients-measurement-using-nir/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

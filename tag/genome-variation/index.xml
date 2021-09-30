@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Genome variation | Wei Li|李伟</title>
+    <link>/tag/genome-variation/</link>
+      <atom:link href="/tag/genome-variation/index.xml" rel="self" type="application/rss+xml" />
+    <description>Genome variation</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Sun, 03 Jun 2012 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>Genome variation</title>
+      <link>/tag/genome-variation/</link>
+    </image>
+    
+    <item>
+      <title>Genome-wide genetic changes during modern breeding of maize</title>
+      <link>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</link>
+      <pubDate>Sun, 03 Jun 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

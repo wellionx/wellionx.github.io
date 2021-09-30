@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flashlight | Wei Li|李伟</title>
+    <link>/tag/flashlight/</link>
+      <atom:link href="/tag/flashlight/index.xml" rel="self" type="application/rss+xml" />
+    <description>flashlight</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>flashlight</title>
+      <link>/tag/flashlight/</link>
+    </image>
+    
+    <item>
+      <title>Linking spectra to genetic diversity</title>
+      <link>/post/linking-spectra-to-genetic-diversity/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/linking-spectra-to-genetic-diversity/</guid>
+      <description>&lt;p&gt;之前看到的一篇&lt;a href=&#34;https://doi.org/10.3732/ajb.1700061&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;文章&lt;/a&gt;。里面有一张图印象深刻，大意是遗传上有差异的种质，其叶片的光谱必然也存在某种变异。这点和现在正在做的叶片光学特征的遗传解析问题不谋而合。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/linking%20spectra%20to%20functional%20and%20phylogenetic%20diversity.jpg&#34; alt=&#34;linking spectra to functional and phylogenetic diversity&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以后会陆续整理光谱应用于遗传研究的文章和思路至此。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

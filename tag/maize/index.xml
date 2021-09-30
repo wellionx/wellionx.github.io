@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maize | Wei Li|李伟</title>
+    <link>/tag/maize/</link>
+      <atom:link href="/tag/maize/index.xml" rel="self" type="application/rss+xml" />
+    <description>Maize</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>Maize</title>
+      <link>/tag/maize/</link>
+    </image>
+    
+    <item>
+      <title>QTL Mapping and Prediction of Haploid Male Fertility Traits in Maize</title>
+      <link>/publication/qtl-mapping-and-prediction-of-haploid-male-fertility-traits-in-maize/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/qtl-mapping-and-prediction-of-haploid-male-fertility-traits-in-maize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development of In Vivo Haploid Inducer Lines for Screening Haploid Immature Embryos in Maize</title>
+      <link>/publication/new-haploid-inducer/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/new-haploid-inducer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mutation of ZmDMP enhances haploid induction in maize</title>
+      <link>/publication/cloning-of-zmdmp/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/cloning-of-zmdmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twin embryo seeds in maize</title>
+      <link>/publication/twin-embryo-in-maize/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/twin-embryo-in-maize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Genome-wide genetic changes during modern breeding of maize</title>
+      <link>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</link>
+      <pubDate>Sun, 03 Jun 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/genome-wide-genetic-changes-during-modern-breeding-of-maize/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>haploid induction | Wei Li|李伟</title>
+    <link>/tag/haploid-induction/</link>
+      <atom:link href="/tag/haploid-induction/index.xml" rel="self" type="application/rss+xml" />
+    <description>haploid induction</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Wei Li ©2021 </copyright><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu8fa43e4483d02e4bfdf294b3386ef244_148313_512x512_fill_lanczos_center_2.png</url>
+      <title>haploid induction</title>
+      <link>/tag/haploid-induction/</link>
+    </image>
+    
+    <item>
+      <title>Development of In Vivo Haploid Inducer Lines for Screening Haploid Immature Embryos in Maize</title>
+      <link>/publication/new-haploid-inducer/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/new-haploid-inducer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mutation of ZmDMP enhances haploid induction in maize</title>
+      <link>/publication/cloning-of-zmdmp/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/cloning-of-zmdmp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
