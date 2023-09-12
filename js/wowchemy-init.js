@@ -1,5 +1,5 @@
 (() => {
-  // ns-hugo:D:\blogdown\Academic-we2\themes\github.com\wowchemy\wowchemy-hugo-modules\wowchemy\assets\js\wowchemy-theming.js
+  // ns-hugo:D:\Projects\blogdown\Academic-we2\themes\github.com\wowchemy\wowchemy-hugo-modules\wowchemy\assets\js\wowchemy-theming.js
   function getThemeMode() {
     return parseInt(localStorage.getItem("wcTheme") || 2);
   }
