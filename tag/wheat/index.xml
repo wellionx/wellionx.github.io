@@ -36,18 +36,18 @@
 &lt;p&gt;这个步骤应该是最难的，我觉得。&lt;/p&gt;
 &lt;p&gt;最初有这个想法，是和本实验室的一本博士生讨论的时候萌生的。当时我们都觉的有必要用一种更简单和直观的方式展示数据。然而苦于没有合适的素材和展示方式，当时就将此事搁浅了。&lt;/p&gt;
 &lt;p&gt;后来，一次偶然的机会。在搜集素材时找到一个小麦植株的矢量图。当时的素材时这个样子。
-&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/src_selected.jpg&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;src_selected.jpg&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;看到这张图的时候，我们一致认为，这就是要找的素材。&lt;/p&gt;
 &lt;p&gt;找到素材之后，接下来就该考虑怎么使用了。&lt;/p&gt;
 &lt;p&gt;我们的想法很简单，找一株最具有代表性的小麦植株，用来展示小麦各器官的。相对来说比较完整的，应该是开花到灌浆期间。这个期间整个植株的发育已经完成，而且穗也比较完全。所以最终选择了灌浆期的这株小麦素材。&lt;/p&gt;
 &lt;p&gt;选好以后，我们就将素材直接放到PPT中做了试验。由于素材各器官是分开的，在PPT中作为形状独立存在。因此，不同器官的化学成分含量可以用该器官形状的颜色的展示。初步的效果如下图。
-&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/wheat_plant_ver1.png&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;wheat_plant_ver1.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;然而，当我们耗时一个多小时将上面的图画完的时候，我们觉得如果小麦植株绘图如果以后要这样用的话，就太麻烦了。每次都需要手动注入数据信息，而且这个过程全凭感觉。&lt;/p&gt;
 &lt;p&gt;这个时候，我想到了R。作为一款专业绘图的统计软件，R在可视化方面有着十分强大的功能。&lt;/p&gt;
 &lt;p&gt;我们案例中，展示植株的形状，和地图的多边形有诸多相似之处。R语言中恰好有一款展示地图数据的R包&lt;code&gt;sf&lt;/code&gt;。这个R包不仅有展示地图的功能，还能自己制作地图。而地图制作中的其中一个元素，多边形，正是和我们做的小麦植株轮廓相似。&lt;/p&gt;
 &lt;p&gt;于是接下来转战到用R包&lt;code&gt;sf&lt;/code&gt;进行小麦植株器官可视化。&lt;/p&gt;
 &lt;p&gt;首选需要根据素材，制作出来小麦植株各器官的多边形轮廓。这个步骤在公众号文章（&lt;a href=&#34;https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A&#34;&gt;一千零一技 | 我用R画了一株小麦&lt;/a&gt;）有详细介绍，在此不再赘述。
-&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/plotwehatinR.png&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;plotwehatinR.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;将图形组合成完整的植株，就可以在R里面就行操作了。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;数据融合与基础功能开发&#34; class=&#34;section level3&#34;&gt;
@@ -75,7 +75,7 @@
 &lt;h3&gt;3. 开发R包&lt;/h3&gt;
 &lt;p&gt;有了以上的实施思想和实现过程，剩下的就是用R包开发的软件将这些函数打包。统计之都网站有一篇博客介绍了&lt;a href=&#34;https://cosx.org/2013/11/building-r-packages-easily&#34;&gt;R包的建立方法&lt;/a&gt;。另外，也有一些开发R包的工具，包括&lt;code&gt;pkgdown&lt;/code&gt;等。&lt;/p&gt;
 &lt;p&gt;R包开发的过程就是将各种函数写入打包调试的过程。
-&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/R_pkg_dev.jpg&#34; /&gt;
+&lt;img src=&#34;R_pkg_dev.jpg&#34; /&gt;
 目前已经创建好R包开发的项目，接下来就根据前面实现的功能将其转换成函数写入到R包中。&lt;/p&gt;
 &lt;/div&gt;
 </description>
