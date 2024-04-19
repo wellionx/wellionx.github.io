@@ -93,8 +93,6 @@
     
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
-    
 
     
 
@@ -633,7 +631,7 @@
   <h1>Visualize my spectra</h1>
 
   
-  <p class="page-subtitle">光谱系列第一辑</p>
+  <p class="page-subtitle">光谱系列第1辑: 光谱可视化</p>
   
 
   
@@ -704,25 +702,21 @@
   <div class="article-container">
 
     <div class="article-style">
-      
-
-
-<p>从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。</p>
+      <p>从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。</p>
 <p>于是记录下来我自己实践的过程。</p>
-<div id="批量读取光谱数据" class="section level3">
-<h3>批量读取光谱数据</h3>
+<h3 id="批量读取光谱数据">批量读取光谱数据</h3>
 <p>一般来说，拿到的原始光谱数据数据有这样的特点：</p>
-<ol style="list-style-type: decimal">
-<li><strong>光谱反射率和光谱吸收值夹杂在文件内部。</strong>以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
-<img src="https://tva3.sinaimg.cn/mw690/6b84e15bgy1ggsq5agy8xj20m80gmmyq.jpg" alt="SR3501sedfile" /></li>
+<ol>
+<li><strong>光谱反射率和光谱吸收值夹杂在文件内部。</strong> 以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
+<img src="sedfile_snapshot.jpg" alt="SR3501sedfile"></li>
 </ol>
 <p>2.<strong>数据文件不止一个，常常需要批量读取。</strong></p>
 <p>于是经过多次试错与总结，写下了下面的方法批量读取指定行的光谱数据。</p>
-<pre class="r"><code># get file names of all spectra
+<pre><code class="language-r"># get file names of all spectra
 dir = &quot;Spec/&quot;
 files = list.files(path = dir ,recursive = TRUE)
 # read spectra from AB files
-filepath = paste(dir, files, sep = &#39;&#39;)
+filepath = paste(dir, files, sep = '')
 # define a dataframe to store spectra data
 spec.bdf &lt;- data.frame()
 
@@ -731,14 +725,15 @@ for (flp in filepath) {
                      stringsAsFactors = F,row.names = 1)
   spec.t &lt;- as.data.frame(t(spec))
   spec.bdf &lt;- rbind(spec.bdf, spec.t)
-}</code></pre>
+}
+</code></pre>
 <p>根据需求，有时候要对数据做一下转置。转置后再把所有的数据bind到一起。</p>
 <p>采用<code>ggplot2</code>绘图，需要的是长数据，原来两列的数据正好符合要求，只需要添加一列信息即可。</p>
-<pre class="r"><code># get file names of all spectra
+<pre><code class="language-r"># get file names of all spectra
 dir = &quot;Spec/&quot;
 files = list.files(path = dir ,recursive = TRUE)
 # read spectra from AB files
-filepath = paste(dir, files, sep = &#39;&#39;)
+filepath = paste(dir, files, sep = '')
 # define a dataframe to store spectra data
 spec.bdf &lt;- data.frame()
 
@@ -749,9 +744,10 @@ for (flp in filepath) {
   spec$unique_id &lt;- basename(flp)
   spec.df &lt;- rbind(spec.df, spec)
   
-}</code></pre>
+}
+</code></pre>
 <p>有了数据就可以展示了，下面是选出来100条光谱进行的展示。</p>
-<pre class="r"><code>library(ggplot2)
+<pre><code class="language-r">library(ggplot2)
 library(cowplot)
 load(file = &quot;D:/blogdown/sourceRda/show spectra.rda&quot;)
 # Define nice breaks for x axis
@@ -763,18 +759,25 @@ ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
   scale_x_continuous(breaks = brk) +
   theme_cowplot() +
   scale_color_manual(values = &quot;black&quot;) +
-  theme(legend.position = &quot;none&quot;) # remove the legend</code></pre>
-<p><img src="/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+  theme(legend.position = &quot;none&quot;) # remove the legend
+</code></pre>
+<p><img src="/post/visualize-my-spectra/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>为了好看，我们还可以给每条光谱加上颜色</p>
-<p><img src="/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-</div>
-<div id="后续更多有意思的分析且听下回分解" class="section level3">
-<h3>后续更多有意思的分析，且听下回分解</h3>
+<p><img src="/post/visualize-my-spectra/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<h3 id="后续更多有意思的分析且听下回分解">后续更多有意思的分析，且听下回分解</h3>
 <p>先附上几张图，再留着以后慢慢讲</p>
-<p><img src="https://gitee.com/wellionx/myimg/raw/master/spectra%20organ%20separate.png" /></p>
-<p><img src="https://gitee.com/wellionx/myimg/raw/master/Spectra%20and%20PCA.png" /></p>
-<p><img src="https://gitee.com/wellionx/myimg/raw/master/spectra%20PCA.png" /></p>
-</div>
+<ul>
+<li><strong>如何优雅的展示不同类别的光谱</strong></li>
+</ul>
+<p><img src="spectra_organ_separate.png" alt=""></p>
+<ul>
+<li><strong>光谱定量分析与主成分分析</strong></li>
+</ul>
+<p><img src="Spectra_and_PCA.png" alt=""></p>
+<ul>
+<li><strong>主成分分析用于分组分类</strong>
+<img src="spectra_PCA.png" alt=""></li>
+</ul>
 
     </div>
 
@@ -930,11 +933,11 @@ ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/draw-wheat-chart-in-r/">Draw wheat chart in R</a></li>
+      <li><a href="/post/color-variations-between-and-within-wheat-plant/">Color variations between and within wheat plant</a></li>
       
       <li><a href="/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/">The key steps of protein content visualizaiton through HSI</a></li>
       
-      <li><a href="/post/my-first-r-package-ggwheat/">My first R package--ggwheat</a></li>
+      <li><a href="/post/my-first-r-package-ggwheat/">my first R package——ggwheat</a></li>
       
       <li><a href="/post/get-your-hands-dirty-install-r-from-the-begining/">手把手教你安装R</a></li>
       
@@ -1042,8 +1045,6 @@ ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
     
 
     
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
     
 
     

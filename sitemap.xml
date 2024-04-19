@@ -39,7 +39,7 @@
     <lastmod>2023-09-13T15:13:08+08:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2023-09-13T15:13:08+08:00</lastmod>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
   </url><url>
     <loc>/tag/wheat/</loc>
     <lastmod>2023-09-13T15:13:08+08:00</lastmod>
@@ -57,16 +57,25 @@
     <lastmod>2023-09-13T15:13:08+08:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2021-09-28T08:19:30+08:00</lastmod>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
+  </url><url>
+    <loc>/tag/data-science/</loc>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
   </url><url>
     <loc>/post/my-first-r-package-ggwheat/</loc>
-    <lastmod>2021-09-28T08:19:30+08:00</lastmod>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
+  </url><url>
+    <loc>/tag/plot/</loc>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
   </url><url>
     <loc>/post/</loc>
-    <lastmod>2021-09-28T08:19:30+08:00</lastmod>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
   </url><url>
-    <loc>/category/r/</loc>
-    <lastmod>2021-09-28T08:19:30+08:00</lastmod>
+    <loc>/tag/r/</loc>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
+  </url><url>
+    <loc>/category/%E6%8A%80%E8%83%BD/</loc>
+    <lastmod>2024-04-18T14:33:55+08:00</lastmod>
   </url><url>
     <loc>/contact/</loc>
     <lastmod>2021-09-27T00:00:00+00:00</lastmod>
@@ -80,25 +89,13 @@
     <loc>/tag/spectra/</loc>
     <lastmod>2021-09-27T15:17:54+08:00</lastmod>
   </url><url>
-    <loc>/tag/plot/</loc>
+    <loc>/category/r/</loc>
     <lastmod>2021-09-09T14:24:36+08:00</lastmod>
   </url><url>
     <loc>/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/</loc>
     <lastmod>2021-09-09T14:24:36+08:00</lastmod>
   </url><url>
-    <loc>/post/rainfall-in-2021-summer/</loc>
-    <lastmod>2021-07-10T19:25:42+08:00</lastmod>
-  </url><url>
-    <loc>/tag/visualization/</loc>
-    <lastmod>2021-07-10T19:25:42+08:00</lastmod>
-  </url><url>
-    <loc>/tag/data-science/</loc>
-    <lastmod>2021-04-15T11:27:11+08:00</lastmod>
-  </url><url>
     <loc>/post/get-your-hands-dirty-install-r-from-the-begining/</loc>
-    <lastmod>2021-04-15T11:27:11+08:00</lastmod>
-  </url><url>
-    <loc>/category/%E6%8A%80%E8%83%BD/</loc>
     <lastmod>2021-04-15T11:27:11+08:00</lastmod>
   </url><url>
     <loc>/tag/n-remobilization/</loc>
@@ -110,28 +107,22 @@
     <loc>/tag/winter-wheat/</loc>
     <lastmod>2021-04-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/draw-wheat-chart-in-r/</loc>
-    <lastmod>2020-12-18T20:15:02+08:00</lastmod>
-  </url><url>
     <loc>/tag/flashlight/</loc>
     <lastmod>2020-07-25T21:16:12+08:00</lastmod>
-  </url><url>
-    <loc>/post/hourly-weather/</loc>
-    <lastmod>2020-12-18T12:42:37+08:00</lastmod>
   </url><url>
     <loc>/post/linking-spectra-to-genetic-diversity/</loc>
     <lastmod>2020-07-25T21:16:12+08:00</lastmod>
   </url><url>
-    <loc>/tag/r/</loc>
-    <lastmod>2020-12-18T12:42:37+08:00</lastmod>
+    <loc>/tag/visualization/</loc>
+    <lastmod>2020-12-18T11:23:45+08:00</lastmod>
   </url><url>
     <loc>/post/visualization-of-history-daily-weather/</loc>
     <lastmod>2020-12-18T11:23:45+08:00</lastmod>
   </url><url>
-    <loc>/post/2020-12-18-pca-analysis-of-reflectance-spectra/</loc>
+    <loc>/post/pca-analysis-of-reflectance-spectra/</loc>
     <lastmod>2020-12-17T22:09:44+08:00</lastmod>
   </url><url>
-    <loc>/post/2020-12-18-website-collection/</loc>
+    <loc>/post/2020-12-18-r-packages-for-data-science/</loc>
     <lastmod>2020-12-02T14:43:27+08:00</lastmod>
   </url><url>
     <loc>/post/2020-12-18-food-chemistry/</loc>
@@ -142,6 +133,9 @@
   </url><url>
     <loc>/publication/predicting-micronutrients-of-wheat-using-hyperspectral-imaging/</loc>
     <lastmod>2020-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/color-variations-between-and-within-wheat-plant/</loc>
+    <lastmod>2020-12-18T20:15:02+08:00</lastmod>
   </url><url>
     <loc>/post/visualize-my-spectra/</loc>
     <lastmod>2020-07-16T20:52:37+08:00</lastmod>

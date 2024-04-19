@@ -36,25 +36,21 @@
       <link>/post/visualize-my-spectra/</link>
       <pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate>
       <guid>/post/visualize-my-spectra/</guid>
-      <description>
-
-
-&lt;p&gt;从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。&lt;/p&gt;
+      <description>&lt;p&gt;从去年开始就一直在分析光谱的数据，刚开始以为R里面会有包能解决我关于光谱的所有问题。经过一段时间的试错之后，我发现自己错了。&lt;/p&gt;
 &lt;p&gt;于是记录下来我自己实践的过程。&lt;/p&gt;
-&lt;div id=&#34;批量读取光谱数据&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;批量读取光谱数据&lt;/h3&gt;
+&lt;h3 id=&#34;批量读取光谱数据&#34;&gt;批量读取光谱数据&lt;/h3&gt;
 &lt;p&gt;一般来说，拿到的原始光谱数据数据有这样的特点：&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;strong&gt;光谱反射率和光谱吸收值夹杂在文件内部。&lt;/strong&gt;以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
-&lt;img src=&#34;https://tva3.sinaimg.cn/mw690/6b84e15bgy1ggsq5agy8xj20m80gmmyq.jpg&#34; alt=&#34;SR3501sedfile&#34; /&gt;&lt;/li&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;光谱反射率和光谱吸收值夹杂在文件内部。&lt;/strong&gt; 以SR3501的数据为例，打开之后是这样的(如下图所示)。文件内部有很多关于仪器和配置的信息。真正对我们有价值的数据在27行以后。具体的就是此处的两列数据，第一列为波长，第二列为对应的反射率。所以这就要求读取数据的时候找到指定的行。
+&lt;img src=&#34;sedfile_snapshot.jpg&#34; alt=&#34;SR3501sedfile&#34;&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;2.&lt;strong&gt;数据文件不止一个，常常需要批量读取。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;于是经过多次试错与总结，写下了下面的方法批量读取指定行的光谱数据。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# get file names of all spectra
 dir = &amp;quot;Spec/&amp;quot;
 files = list.files(path = dir ,recursive = TRUE)
 # read spectra from AB files
-filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+filepath = paste(dir, files, sep = &#39;&#39;)
 # define a dataframe to store spectra data
 spec.bdf &amp;lt;- data.frame()
 
@@ -63,14 +59,15 @@ for (flp in filepath) {
                      stringsAsFactors = F,row.names = 1)
   spec.t &amp;lt;- as.data.frame(t(spec))
   spec.bdf &amp;lt;- rbind(spec.bdf, spec.t)
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;根据需求，有时候要对数据做一下转置。转置后再把所有的数据bind到一起。&lt;/p&gt;
 &lt;p&gt;采用&lt;code&gt;ggplot2&lt;/code&gt;绘图，需要的是长数据，原来两列的数据正好符合要求，只需要添加一列信息即可。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get file names of all spectra
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# get file names of all spectra
 dir = &amp;quot;Spec/&amp;quot;
 files = list.files(path = dir ,recursive = TRUE)
 # read spectra from AB files
-filepath = paste(dir, files, sep = &amp;#39;&amp;#39;)
+filepath = paste(dir, files, sep = &#39;&#39;)
 # define a dataframe to store spectra data
 spec.bdf &amp;lt;- data.frame()
 
@@ -81,9 +78,10 @@ for (flp in filepath) {
   spec$unique_id &amp;lt;- basename(flp)
   spec.df &amp;lt;- rbind(spec.df, spec)
   
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;有了数据就可以展示了，下面是选出来100条光谱进行的展示。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
 library(cowplot)
 load(file = &amp;quot;D:/blogdown/sourceRda/show spectra.rda&amp;quot;)
 # Define nice breaks for x axis
@@ -95,18 +93,25 @@ ggplot(spec.df, aes(Wavelengths, Reflectance,group = unique_id)) +
   scale_x_continuous(breaks = brk) +
   theme_cowplot() +
   scale_color_manual(values = &amp;quot;black&amp;quot;) +
-  theme(legend.position = &amp;quot;none&amp;quot;) # remove the legend&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+  theme(legend.position = &amp;quot;none&amp;quot;) # remove the legend
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/visualize-my-spectra/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;为了好看，我们还可以给每条光谱加上颜色&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-12-18-visualize-my-spectra/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;后续更多有意思的分析且听下回分解&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;后续更多有意思的分析，且听下回分解&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/visualize-my-spectra/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;后续更多有意思的分析且听下回分解&#34;&gt;后续更多有意思的分析，且听下回分解&lt;/h3&gt;
 &lt;p&gt;先附上几张图，再留着以后慢慢讲&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20organ%20separate.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/Spectra%20and%20PCA.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/wellionx/myimg/raw/master/spectra%20PCA.png&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;如何优雅的展示不同类别的光谱&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;spectra_organ_separate.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;光谱定量分析与主成分分析&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;Spectra_and_PCA.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;主成分分析用于分组分类&lt;/strong&gt;
+&lt;img src=&#34;spectra_PCA.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

@@ -93,8 +93,6 @@
     
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
-    
 
     
 
@@ -277,14 +275,14 @@
   
   <meta property="og:site_name" content="Wei Li|李伟">
   <meta property="og:url" content="/post/my-first-r-package-ggwheat/">
-  <meta property="og:title" content="My first R package--ggwheat | Wei Li|李伟">
+  <meta property="og:title" content="my first R package——ggwheat | Wei Li|李伟">
   <meta property="og:description" content="作为一名R重度用户，平时用的最多的是画图。所以人生中第一个R包是关于可视化的。由于喜欢ggplot的简洁绘图风格，所以在ggplot的基础上开始了创作。而且还将包的名字命名为ggwheat。"><meta property="og:image" content="/post/my-first-r-package-ggwheat/featured.jpg">
   <meta property="twitter:image" content="/post/my-first-r-package-ggwheat/featured.jpg"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2021-09-28T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2021-09-28T08:19:30&#43;08:00">
+    <meta property="article:modified_time" content="2024-04-18T14:33:55&#43;08:00">
   
 
   
@@ -310,14 +308,14 @@
     "@type": "WebPage",
     "@id": "/post/my-first-r-package-ggwheat/"
   },
-  "headline": "My first R package--ggwheat",
+  "headline": "my first R package——ggwheat",
   
   "image": [
     "/post/my-first-r-package-ggwheat/featured.jpg"
   ],
   
   "datePublished": "2021-09-28T00:00:00Z",
-  "dateModified": "2021-09-28T08:19:30+08:00",
+  "dateModified": "2024-04-18T14:33:55+08:00",
   
   "author": {
     "@type": "Person",
@@ -350,7 +348,7 @@
 
 
 
-  <title>My first R package--ggwheat | Wei Li|李伟</title>
+  <title>my first R package——ggwheat | Wei Li|李伟</title>
 
 </head>
 
@@ -642,7 +640,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>My first R package--ggwheat</h1>
+  <h1>my first R package——ggwheat</h1>
 
   
 
@@ -662,7 +660,7 @@
           Last updated on
       
     
-    Sep 28, 2021
+    Apr 18, 2024
   </span>
   
 
@@ -685,7 +683,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/r/">R</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%8A%80%E8%83%BD/">技能</a></span>
   
 
 </div>
@@ -720,67 +718,59 @@
   <div class="article-container">
 
     <div class="article-style">
-      
-<script src="/post/my-first-r-package-ggwheat/index.en_files/header-attrs/header-attrs.js"></script>
-
-
-<p>关于这个R包，早期也写过一篇介绍的文章，推送在小麦研究联盟的公众号上（<a href="https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A">一千零一技 | 我用R画了一株小麦</a>）。</p>
+      <p>关于这个R包，早期也写过一篇介绍的文章，推送在小麦研究联盟的公众号上（<a href="https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A" target="_blank" rel="noopener">一千零一技 | 我用R画了一株小麦</a>）。</p>
 <p>当时仅仅是在我的电脑上实现了一个小麦植株器官的可视化功能。后来，有很多人对这个功能感兴趣。于是将这个功能写成R包的计划就提上日程。</p>
 <p>在介绍这个R包的功能之前，先简单回顾一下整个创作工程。</p>
 <p>我将其分为3个步骤：</p>
-<ol style="list-style-type: decimal">
+<ol>
 <li>素材准备与制作</li>
 <li>数据融合与功能优化</li>
 <li>R包开发</li>
 </ol>
 <p>下面将逐一介绍各个步骤</p>
-<div id="素材准备与制作" class="section level3">
-<h3>1. 素材准备与制作</h3>
+<h3 id="1-素材准备与制作">1. 素材准备与制作</h3>
 <p>这个步骤应该是最难的，我觉得。</p>
 <p>最初有这个想法，是和本实验室的一本博士生讨论的时候萌生的。当时我们都觉的有必要用一种更简单和直观的方式展示数据。然而苦于没有合适的素材和展示方式，当时就将此事搁浅了。</p>
 <p>后来，一次偶然的机会。在搜集素材时找到一个小麦植株的矢量图。当时的素材时这个样子。
-<img src="src_selected.jpg" /></p>
+<img src="src_selected.jpg" alt=""></p>
 <p>看到这张图的时候，我们一致认为，这就是要找的素材。</p>
 <p>找到素材之后，接下来就该考虑怎么使用了。</p>
 <p>我们的想法很简单，找一株最具有代表性的小麦植株，用来展示小麦各器官的。相对来说比较完整的，应该是开花到灌浆期间。这个期间整个植株的发育已经完成，而且穗也比较完全。所以最终选择了灌浆期的这株小麦素材。</p>
 <p>选好以后，我们就将素材直接放到PPT中做了试验。由于素材各器官是分开的，在PPT中作为形状独立存在。因此，不同器官的化学成分含量可以用该器官形状的颜色的展示。初步的效果如下图。
-<img src="wheat_plant_ver1.png" /></p>
+<img src="wheat_plant_ver1.png" alt=""></p>
 <p>然而，当我们耗时一个多小时将上面的图画完的时候，我们觉得如果小麦植株绘图如果以后要这样用的话，就太麻烦了。每次都需要手动注入数据信息，而且这个过程全凭感觉。</p>
 <p>这个时候，我想到了R。作为一款专业绘图的统计软件，R在可视化方面有着十分强大的功能。</p>
 <p>我们案例中，展示植株的形状，和地图的多边形有诸多相似之处。R语言中恰好有一款展示地图数据的R包<code>sf</code>。这个R包不仅有展示地图的功能，还能自己制作地图。而地图制作中的其中一个元素，多边形，正是和我们做的小麦植株轮廓相似。</p>
 <p>于是接下来转战到用R包<code>sf</code>进行小麦植株器官可视化。</p>
-<p>首选需要根据素材，制作出来小麦植株各器官的多边形轮廓。这个步骤在公众号文章（<a href="https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A">一千零一技 | 我用R画了一株小麦</a>）有详细介绍，在此不再赘述。
-<img src="plotwehatinR.png" /></p>
+<p>首选需要根据素材，制作出来小麦植株各器官的多边形轮廓。这个步骤在公众号文章（<a href="https://mp.weixin.qq.com/s/N8dmPifnM_0Xhpcjcjmn_A" target="_blank" rel="noopener">一千零一技 | 我用R画了一株小麦</a>）有详细介绍，在此不再赘述。
+<img src="plotwehatinR.png" alt=""></p>
 <p>将图形组合成完整的植株，就可以在R里面就行操作了。</p>
-</div>
-<div id="数据融合与基础功能开发" class="section level3">
-<h3>2. 数据融合与基础功能开发</h3>
+<h3 id="2-数据融合与基础功能开发">2. 数据融合与基础功能开发</h3>
 <p>先来看下例子。这个例子中，使用随机数为小麦植株9中器官做了赋值。通过图中颜色可以明显辨别不同器官的数值差异。</p>
-<p><img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" />
-<strong>添加数据标签功能</strong></p>
+<pre><code>## Warning: package 'ggplot2' was built under R version 4.4.0
+</code></pre>
+<p><img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><strong>添加数据标签功能</strong></p>
 <p>然而，仅仅通过颜色的变化好像还不足以展示出器官间的不同。尤其是当某几个器官数据差异不大导致颜色无法分辨时。就有必要用具体的数据加以区分了。我们通过对每个器官添加标签的方式来实现。提前在器官上选取坐标作为标签在器官的位置。为了使显示的数值标签不遮挡，采用R包<code>ggrepel</code>进行标签展示。具体结果如下图所示。</p>
-<p><img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p><strong>添加不同调色板</strong>
 最初做颜色展示的时候，只考虑用颜色变异大的色彩。spectral色板成为了首选。当时当成品出来的时候，发现并不是那么好看。于是又挑选了其他几种色板，可以根据需要自行选择。比如，我要展示的氮含量的数据。这个数据植株绿色相关，我希望颜色越绿，表示的氮含量越高。而又希望对比色略微有些差异。那我就可以用YlGn色板。也就是图中第四个展示的。
-<img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p><strong>展示时间尺度的变化</strong>
 上面讲到的仅仅是单株小麦在器官之间的空间变化。而我们实际试验过程中不仅仅取一次样品。如果多次取样，如何展示其时间变化呢。</p>
 <p>ggplot中的分面功能很好的解决了这个问题。下面这张图就是展示时空变化的小麦植株氮浓度(同头图)。</p>
-<p><img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-4-1.png" width="1632" /></p>
+<p><img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-4-1.png" width="1632" /></p>
 <p><strong>任意组合不同时间下的植株</strong></p>
 <p>展示开花期和成熟期的济麦22与农大399两个小麦品种，并且加上数值标签。</p>
-<p><img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-5-1.png" width="960" />
+<p><img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-5-1.png" width="960" />
 以上是品种济麦22</p>
-<p><img src="/post/my-first-r-package-ggwheat/index.en_files/figure-html/unnamed-chunk-6-1.png" width="960" />
+<p><img src="/post/my-first-r-package-ggwheat/index_files/figure-html/unnamed-chunk-6-1.png" width="960" />
 以上是品种农大399</p>
-</div>
-<div id="开发r包" class="section level3">
-<h3>3. 开发R包</h3>
-<p>有了以上的实施思想和实现过程，剩下的就是用R包开发的软件将这些函数打包。统计之都网站有一篇博客介绍了<a href="https://cosx.org/2013/11/building-r-packages-easily">R包的建立方法</a>。另外，也有一些开发R包的工具，包括<code>pkgdown</code>等。</p>
+<h3 id="3-开发r包">3. 开发R包</h3>
+<p>有了以上的实施思想和实现过程，剩下的就是用R包开发的软件将这些函数打包。统计之都网站有一篇博客介绍了<a href="https://cosx.org/2013/11/building-r-packages-easily" target="_blank" rel="noopener">R包的建立方法</a>。另外，也有一些开发R包的工具，包括<code>pkgdown</code>等。</p>
 <p>R包开发的过程就是将各种函数写入打包调试的过程。
-<img src="R_pkg_dev.jpg" />
+<img src="R_pkg_dev.jpg" alt="">
 目前已经创建好R包开发的项目，接下来就根据前面实现的功能将其转换成函数写入到R包中。</p>
-</div>
 
     </div>
 
@@ -793,9 +783,11 @@
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/academic/">academic</a>
+  <a class="badge badge-light" href="/tag/data-science/">Data science</a>
   
-  <a class="badge badge-light" href="/tag/wheat/">Wheat</a>
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/plot/">plot</a>
   
 </div>
 
@@ -934,13 +926,13 @@
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/publication/detection-of-combined-frost-and-drought-stress-in-wheat/">Detection of combined frost and drought stress in wheat</a></li>
+      <li><a href="/post/pca-analysis-of-reflectance-spectra/">PCA analysis of reflectance spectra</a></li>
       
-      <li><a href="/publication/estimation-of-above-ground-biomass-of-winter-wheat/">Estimation of Above-Ground Biomass of Winter Wheat</a></li>
+      <li><a href="/post/2020-12-18-r-packages-for-data-science/">R packages for Data Science</a></li>
       
-      <li><a href="/post/the-key-steps-of-protein-content-visualizaiton-through-hsi/">The key steps of protein content visualizaiton through HSI</a></li>
+      <li><a href="/post/get-your-hands-dirty-install-r-from-the-begining/">手把手教你安装R</a></li>
       
-      <li><a href="/post/draw-wheat-chart-in-r/">Draw wheat chart in R</a></li>
+      <li><a href="/post/color-variations-between-and-within-wheat-plant/">Color variations between and within wheat plant</a></li>
       
       <li><a href="/post/visualize-my-spectra/">Visualize my spectra</a></li>
       
@@ -1046,8 +1038,6 @@
     
 
     
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
     
 
     
